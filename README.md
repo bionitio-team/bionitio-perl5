@@ -178,7 +178,6 @@ It returns an exit status of 3 in this circumstance.
 # Testing
 
 ```
-% cd bionitio/perl5
 % ./bionitio_test.pl
 # the output of the test cases will appear here
 ```
