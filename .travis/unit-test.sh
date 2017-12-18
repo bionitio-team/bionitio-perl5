@@ -6,7 +6,7 @@ errors=0
 # Run unit tests
 (
   ./bionitio_test.pl || {
-    echo "'perl perl5/bionitio/bionitio_test.pl' failed"
+    echo "'bionitio_test.pl' failed"
     let errors+=1
   }
 )
