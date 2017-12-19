@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# Install Perl5 dependencies
+# Install Perl5 dependencies from cpanfile
 
-echo 'Perl5 install'
-(
-    cpanm --quiet --installdeps --notest . 
-)
+cpanm --quiet --installdeps --notest . 
