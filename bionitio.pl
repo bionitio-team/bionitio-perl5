@@ -52,7 +52,7 @@ Readonly my $EXIT_FASTA_FILE_ERROR   => 3;
 Readonly my $DEFAULT_MINLEN => 0;
 
 # Header row for the output
-Readonly my $HEADER => "FILENAME\tTOTAL\tNUMSEQ\tMIN\tAVG\tMAX";
+Readonly my $HEADER => "FILENAME\tNUMSEQ\tTOTAL\tMIN\tAVG\tMAX";
 
 # Get the program name
 my ( undef, undef, $PROGRAM_NAME ) = File::Spec->splitpath($0);
