@@ -2,7 +2,7 @@
 
 # Overview 
 
-This is a Perl 5 implementation of [bionitio](https://github.com/bionitio-team/bionitio).
+This is a perl5 implementation of [bionitio](https://github.com/bionitio-team/bionitio).
 
 The program reads one or more input FASTA files. For each file it computes a variety of statistics, and then prints a summary of the statistics as output.
 
@@ -35,6 +35,7 @@ sudo cpan Bio::Perl
 sudo cpan Log::Log4perl
 ```
 
+
 # General behaviour
 
 Bionitio accepts zero or more FASTA filenames on the command line. If zero filenames are specified it reads a single FASTA file from the standard input device (stdin). Otherwise it reads each named FASTA file in the order specified on the command line. Bionitio reads each input FASTA file, computes various statistics about the contents of the file, and then displays a tab-delimited summary of the statistics as output. Each input file produces at most one output line of statistics. Each line of output is prefixed by the input filename or by the text "`stdin`" if the standard input device was used.
@@ -60,9 +61,10 @@ In the examples below, `%` indicates the command line prompt.
 ## Help message
 
 Bionitio can display usage information on the command line via the `-h` or `--help` argument:
+
 ```
-% ./bionitio.pl -h
-usage: bionitio.pl [FASTA_FILES] [--help|-h] [--log] [--version] [--minlen|-m]
+% ./bionitio -h
+usage: bionitio [FASTA_FILES] [--help|-h] [--log] [--version] [--minlen|-m]
 
 Read one or more FASTA files, compute simple stats for each file
 
@@ -85,14 +87,14 @@ There are no restrictions on the name of the FASTA files. Often FASTA filenames 
 
 The example below illustrates bionitio applied to a single named FASTA file called `file1.fa`:
 ```
-% bionitio.pl file1.fa
+% bionitio file1.fa
 FILENAME	NUMSEQ	TOTAL	MIN	AVG	MAX
 file1.fa	5264	3801855	31	722	53540
 ```
 
 The example below illustrates bionitio applied to three named FASTA files called `file1.fa`, `file2.fa` and `file3.fa`:
 ```
-% bionitio.pl file1.fa file2.fa file3.fa
+% bionitio file1.fa file2.fa file3.fa
 FILENAME	NUMSEQ	TOTAL	MIN	AVG	MAX
 file1.fa	5264	3801855	31	722	53540
 file2.fa	5264	3801855	31	722	53540
@@ -104,7 +106,7 @@ file3.fa	5264	3801855	31	722	53540
 The example below illustrates bionitio reading a FASTA file from standard input. In this example we have redirected the contents of a file called `file1.fa` into the standard input using the shell redirection operator `<`:
 
 ```
-% bionitio.pl < file1.fa
+% bionitio < file1.fa
 FILENAME	NUMSEQ	TOTAL	MIN	AVG	MAX
 stdin	5264	3801855	31	722	53540
 ```
@@ -112,7 +114,7 @@ stdin	5264	3801855	31	722	53540
 Equivalently, you could achieve the same result by piping a FASTA file into bionitio:
 
 ```
-% cat file1.fa | bionitio.pl
+% cat file1.fa | bionitio
 FILENAME	NUMSEQ	TOTAL	MIN	AVG	MAX
 stdin	5264	3801855	31	722	53540
 ```
@@ -123,7 +125,7 @@ Bionitio provides an optional command line argument `--minlen` which causes it t
 
 The example below illustrates bionitio applied to a single FASTA file called `file`.fa` with a `--minlen` filter of `1000`.
 ```
-% bionitio.pl --minlen 1000 file.fa
+% bionitio --minlen 1000 file.fa
 FILENAME	NUMSEQ	TOTAL	MIN	AVG	MAX
 file1.fa	4711	2801855	1021	929	53540
 ```
@@ -133,13 +135,15 @@ file1.fa	4711	2801855	1021	929	53540
 If the ``--log FILE`` command line argument is specified, bionitio will output a log file containing information about program progress. The log file includes the command line used to execute the program, and a note indicating which files have been processes so far. Events in the log file are annotated with their date and time of occurrence. 
 
 ```
-% bionitio.pl --log bt.log file1.fasta file2.fasta 
+% bionitio --log bt.log file1.fasta file2.fasta 
 # normal bionitio output appears here
 # contents of log file displayed below
+```
+```
 % cat bt.log
 2017/04/22 19:41:40 INFO program started
-2017/04/22 19:41:40 INFO command line arguments: ./bionitio.pl file1.fasta file2.fasta 
-2017/04/22 19:41:40 INFO Processing FASTA file from file1.fasta 
+2017/04/22 19:41:40 INFO command line arguments: ./bionitio.pl file1.fasta file2.fasta
+2017/04/22 19:41:40 INFO Processing FASTA file from file1.fasta
 2017/04/22 19:41:40 INFO Processing FASTA file from file2.fasta
 ```
 
@@ -147,9 +151,9 @@ If the ``--log FILE`` command line argument is specified, bionitio will output a
 
 It is possible that the input FASTA file contains zero sequences, or, when the `--minlen` command line argument is used, it is possible that the file contains no sequences of length greater-than-or-equal-to the supplied value. In both of those cases bionitio will not be able to compute minimum, maximum or average sequence lengths, and instead it shows output in the following way:
 
-The example below illustrates bionitio applied to a single FASTA file called `empty`.fa` which contains zero sequences:
+The example below illustrates bionitio applied to a single FASTA file called `empty.fa` which contains zero sequences:
 ```
-% bionitio.pl empty.fa
+% bionitio empty.fa
 FILENAME	NUMSEQ	TOTAL	MIN	AVG	MAX
 empty.fa	0	0	-	-	-
 ```
@@ -168,27 +172,31 @@ Bionitio returns the following exit status values:
 
 ## Invalid input FASTA files
 
-If the input file cannot be parsed as FASTA then `bionitio.pl` will exit the program immediately, and will not process any remaining files.
-It returns an exit status of 3 in this circumstance.
-
 ## Incorrect command line arguments
 
 ## Memory limits and other resource restrictions
 
 # Testing
 
+## Unit tests
+
 ```
 % ./bionitio_test.pl
 # the output of the test cases will appear here
 ```
 
+
+## Test suite
+
 A set of sample test input files is provided in the `test_data` folder.
 ```
-% bionitio.pl two_sequence.fasta 
-FILENAME	TOTAL	NUMSEQ	MIN	AVG	MAX
-two_sequence.fasta	2	357	120	178	237
+% bionitio two_sequence.fasta
+FILENAME        TOTAL   NUMSEQ  MIN     AVG     MAX
+two_sequence.fasta      2       357     120     178     237
 ```
 
 # Bugs
 
-File at our [Issue Tracker](https://github.com/bionitio-team/bionitio/issues)
+[General bionitio issues](https://github.com/bionitio-team/bionitio/issues)
+
+[bionitio-perl5 specific issues](https://github.com/bionitio-team/bionitio-perl5/issues) 
