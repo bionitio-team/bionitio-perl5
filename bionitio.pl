@@ -295,7 +295,7 @@ sub get_options {
         type    => 'Array',
         metavar => 'FASTA_FILES'
     );
-    return $parser->parse_args();
+    return $parser;
 }
 
 # The entry point for the program
@@ -305,7 +305,13 @@ sub get_options {
 #
 # This function controls the overall execution of the program
 sub main {
-    my $options = get_options();
+    my $parser = get_options();
+    my $options;
+    eval { $options = $parser->parse_args() };
+    if ( $@ ) {
+        $parser->print_usage;
+        exit $EXIT_COMMAND_LINE_ERROR;
+    }
     if ( $options->version ) {
         print "$PROGRAM_NAME version $VERSION\n";
         exit $EXIT_SUCCESS;
