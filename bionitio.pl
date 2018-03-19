@@ -296,6 +296,10 @@ sub get_options {
         type    => 'Array',
         metavar => 'FASTA_FILES'
     );
+    # If the parser fails, perhaps because the user entered an unrecognised
+    # command line argument, then exit the program with the appropriate
+    # exit status (the default exit status from parse_args is not the
+    # one we want.
     eval { $options = $parser->parse_args() };
     if ( $@ ) {
         $parser->print_usage;
