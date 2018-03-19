@@ -265,6 +265,7 @@ sub pretty_output {
 # If the user invokes the program with incorrect arguments then this function
 # will print a usage message and exit the program with an error.
 sub get_options {
+    my $options;
     my $parser = Getopt::ArgParse->new_parser(
         prog => 'bionitio.pl',
         description =>
@@ -295,7 +296,14 @@ sub get_options {
         type    => 'Array',
         metavar => 'FASTA_FILES'
     );
-    return $parser;
+    eval { $options = $parser->parse_args() };
+    if ( $@ ) {
+        $parser->print_usage;
+        exit $EXIT_COMMAND_LINE_ERROR;
+    }
+    else {
+        return $options;
+    }
 }
 
 # The entry point for the program
@@ -305,13 +313,7 @@ sub get_options {
 #
 # This function controls the overall execution of the program
 sub main {
-    my $parser = get_options();
-    my $options;
-    eval { $options = $parser->parse_args() };
-    if ( $@ ) {
-        $parser->print_usage;
-        exit $EXIT_COMMAND_LINE_ERROR;
-    }
+    my $options = get_options();
     if ( $options->version ) {
         print "$PROGRAM_NAME version $VERSION\n";
         exit $EXIT_SUCCESS;
