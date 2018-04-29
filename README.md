@@ -10,6 +10,16 @@ This program is released as open source software under the terms of [MIT License
 
 # Installing
 
+Clone this repository: 
+```
+git clone https://github.com/bionitio-team/bionitio-perl5
+```
+
+Move into the repository directory:
+```
+cd bionitio-perl5
+```
+
 XXX instructions about how to do this needed.
 
 `bionitio.pl` depends on [BioPerl](http://bioperl.org) for parsing FASTA
