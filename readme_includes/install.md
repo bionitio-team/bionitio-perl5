@@ -17,5 +17,6 @@ sudo yum install perl-bioperl
 ```
 sudo cpan Bio::Perl
 sudo cpan Log::Log4perl
+sudo cpan -i Getopt::ArgParse
+sudo cpan -i Readonly
 ```
-
