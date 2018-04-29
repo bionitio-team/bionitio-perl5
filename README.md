@@ -1,6 +1,6 @@
 [![travis](https://travis-ci.org/bionitio-team/bionitio-perl5.svg?branch=master)](https://travis-ci.org/bionitio-team/bionitio-perl5)
 
-# Overview 
+# Overview
 
 This program reads one or more input FASTA files. For each file it computes a variety of statistics, and then prints a summary of the statistics as output.
 
@@ -9,6 +9,16 @@ This program reads one or more input FASTA files. For each file it computes a va
 This program is released as open source software under the terms of [MIT License](https://raw.githubusercontent.com/bionitio-team/bionitio/master/LICENSE).
 
 # Installing
+
+Clone this repository:
+```
+git clone https://github.com/bionitio-team/bionitio-perl5
+```
+
+Move into the repository directory:
+```
+cd bionitio-perl5
+```
 
 XXX instructions about how to do this needed.
 
@@ -51,7 +61,7 @@ These are the statistics computed by bionitio, for all sequences with length gre
 
 If there are zero sequences counted in a file, the values of MIN, AVERAGE and MAX cannot be computed. In that case bionitio will print a dash (`-`) in the place of the numerical value. Note that when `--minlen` is set to a value greater than zero it is possible that an input FASTA file does not contain any sequences with length greater-than-or-equal-to the specified value. If this situation arises bionitio acts in the same way as if there are no sequences in the file.
 
-# Usage 
+# Usage
 
 In the examples below, `%` indicates the command line prompt.
 
@@ -80,7 +90,7 @@ optional named arguments:
 
 Bionitio accepts zero or more named FASTA files on the command line. These must be specified following all other command line arguments. If zero files are named, bionitio will read a single FASTA file from the standard input device (stdin).
 
-There are no restrictions on the name of the FASTA files. Often FASTA filenames end in `.fa` or `.fasta`, but that is merely a convention, which is not enforced by bionitio. 
+There are no restrictions on the name of the FASTA files. Often FASTA filenames end in `.fa` or `.fasta`, but that is merely a convention, which is not enforced by bionitio.
 
 The example below illustrates bionitio applied to a single named FASTA file called `file1.fa`:
 ```
@@ -98,7 +108,7 @@ file2.fa	5264	3801855	31	722	53540
 file3.fa	5264	3801855	31	722	53540
 ```
 
-## Reading a single FASTA file from standard input 
+## Reading a single FASTA file from standard input
 
 The example below illustrates bionitio reading a FASTA file from standard input. In this example we have redirected the contents of a file called `file1.fa` into the standard input using the shell redirection operator `<`:
 
@@ -116,9 +126,9 @@ FILENAME	NUMSEQ	TOTAL	MIN	AVG	MAX
 stdin	5264	3801855	31	722	53540
 ```
 
-## Filtering sequences by length 
+## Filtering sequences by length
 
-Bionitio provides an optional command line argument `--minlen` which causes it to ignore (not count) any sequences in the input FASTA files with length strictly less than the supplied value. 
+Bionitio provides an optional command line argument `--minlen` which causes it to ignore (not count) any sequences in the input FASTA files with length strictly less than the supplied value.
 
 The example below illustrates bionitio applied to a single FASTA file called `file`.fa` with a `--minlen` filter of `1000`.
 ```
@@ -129,10 +139,10 @@ file1.fa	4711	2801855	1021	929	53540
 
 ## Logging
 
-If the ``--log FILE`` command line argument is specified, bionitio will output a log file containing information about program progress. The log file includes the command line used to execute the program, and a note indicating which files have been processes so far. Events in the log file are annotated with their date and time of occurrence. 
+If the ``--log FILE`` command line argument is specified, bionitio will output a log file containing information about program progress. The log file includes the command line used to execute the program, and a note indicating which files have been processes so far. Events in the log file are annotated with their date and time of occurrence.
 
 ```
-% bionitio --log bt.log file1.fasta file2.fasta 
+% bionitio --log bt.log file1.fasta file2.fasta
 # normal bionitio output appears here
 # contents of log file displayed below
 ```
@@ -160,18 +170,14 @@ empty.fa	0	0	-	-	-
 Bionitio returns the following exit status values:
 
 * 0: The program completed successfully.
-* 1: File I/O error. This can occur if at least one of the input FASTA files cannot be opened for reading. This can occur because the file does not exist at the specified path, or bionitio does not have permission to read from the file. 
+* 1: File I/O error. This can occur if at least one of the input FASTA files cannot be opened for reading. This can occur because the file does not exist at the specified path, or bionitio does not have permission to read from the file.
 * 2: A command line error occurred. This can happen if the user specifies an incorrect command line argument. In this circumstance bionitio will also print a usage message to the standard error device (stderr).
-* 3: Input FASTA file is invalid. This can occur if bionitio can read an input file but the file format is invalid. 
+* 3: Input FASTA file is invalid. This can occur if bionitio can read an input file but the file format is invalid.
 
 
 # Error handling
 
-## Invalid input FASTA files
-
-## Incorrect command line arguments
-
-## Memory limits and other resource restrictions
+XXX FIXME
 
 # Testing
 
