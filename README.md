@@ -37,10 +37,11 @@ sudo yum install perl-bioperl
 
 ### CPAN (general Unix)
 ```
-sudo cpan Bio::Perl
-sudo cpan Log::Log4perl
+sudo cpan -i Bio::Perl
+sudo cpan -i Log::Log4perl
+sudo cpan -i Getopt::ArgParse
+sudo cpan -i Readonly
 ```
-
 
 # General behaviour
 
@@ -176,7 +177,7 @@ Bionitio returns the following exit status values:
 
 # Error handling
 
-XXX FIXME
+ERROR: include file ../../bionitio-perl5/readme_includes/errors.md not found
 
 # Testing
 
