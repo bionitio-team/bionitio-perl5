@@ -1,5 +1,5 @@
 ```
-% ./bionitio -h
+$ ./bionitio -h
 usage: bionitio [FASTA_FILES] [--help|-h] [--log] [--version] [--minlen|-m]
 
 Read one or more FASTA files, compute simple stats for each file
