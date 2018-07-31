@@ -2,9 +2,9 @@
 
 # Module      : bionitio.pl
 # Description : The main entry point for the program.
-# Copyright   : (c) Torsten Seemann and Bernie Pope, 2016 - 2017
-# License     : MIT
-# Maintainer  : tseemann@unimelb.edu.au
+# Copyright   : (c) BIONITIO_AUTHOR, BIONITIO_DATE 
+# License     : BIONITIO_LICENSE 
+# Maintainer  : BIONITIO_EMAIL 
 # Portability : POSIX
 #
 # The program reads one or more input FASTA files. For each file it computes a
