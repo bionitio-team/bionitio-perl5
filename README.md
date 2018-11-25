@@ -22,27 +22,25 @@ Move into the repository directory:
 $ cd bionitio-perl5
 ```
 
-XXX instructions about how to do this needed.
-
 `bionitio.pl` depends on [BioPerl](http://bioperl.org) for parsing FASTA
 files, and Log4Perl for logging. Installing these can be done in many ways:
 
 ### DEB (Ubuntu/Debian/Mint)
 ```
-sudo apt-get install bioperl
+$ sudo apt-get install bioperl
 ```
 
 ### RPM (Centos/RHEL/Fedora)
 ```
-sudo yum install perl-bioperl
+$ sudo yum install perl-bioperl
 ```
 
 ### CPAN (general Unix)
 ```
-sudo cpan -i Bio::Perl
-sudo cpan -i Log::Log4perl
-sudo cpan -i Getopt::ArgParse
-sudo cpan -i Readonly
+$ sudo cpan -i Bio::Perl
+$ sudo cpan -i Log::Log4perl
+$ sudo cpan -i Getopt::ArgParse
+$ sudo cpan -i Readonly
 ```
 
 # General behaviour
@@ -68,7 +66,7 @@ If there are zero sequences counted in a file, the values of MIN, AVERAGE and MA
 Bionitio can display usage information on the command line via the `-h` or `--help` argument:
 
 ```
-% ./bionitio -h
+$ ./bionitio -h
 usage: bionitio [FASTA_FILES] [--help|-h] [--log] [--version] [--minlen|-m]
 
 Read one or more FASTA files, compute simple stats for each file
@@ -172,10 +170,6 @@ Bionitio returns the following exit status values:
 * 2: A command line error occurred. This can happen if the user specifies an incorrect command line argument. In this circumstance bionitio will also print a usage message to the standard error device (stderr).
 * 3: Input FASTA file is invalid. This can occur if bionitio can read an input file but the file format is invalid. 
 
-
-# Error handling
-
-XXX FIXME
 
 # Testing
 
