@@ -1,11 +1,11 @@
 sudo: true
-dist: trusty
+dist: xenial
+services:
+  - docker
 
-language: perl
-
-install:
-  - ./.travis/install-dependencies.sh
+before_install:
+  - docker build -t bionitio-perl5 .
 
 script:
-  - ./functional_tests/bionitio-test.sh -p $TRAVIS_BUILD_DIR/bionitio.pl -d functional_tests/test_data
-  - ./.travis/unit-test.sh
+  - docker run --entrypoint /bionitio/.travis/unit-test.sh bionitio-perl5
+  - docker run --entrypoint /bionitio/functional_tests/bionitio-test.sh bionitio-perl5 -p bionitio.pl -d /bionitio/functional_tests/test_data -v
