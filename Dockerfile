@@ -3,6 +3,7 @@ WORKDIR /bionitio
 COPY . .
 
 RUN cpanm --quiet --installdeps --notest . 
-ENV PATH "/bionitio/:${PATH}"
+ENV PERL5LIB "/bionitio"
+ENV PATH "/bionitio:${PATH}"
 
 ENTRYPOINT ["bionitio.pl"]
