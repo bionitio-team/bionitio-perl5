@@ -5,5 +5,3 @@ COPY . .
 RUN cpanm --quiet --installdeps --notest . 
 ENV PERL5LIB "/bionitio"
 ENV PATH "/bionitio:${PATH}"
-
-ENTRYPOINT ["bionitio.pl"]
