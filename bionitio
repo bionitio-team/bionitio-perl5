@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-# Module      : bionitio.pl
+# Module      : bionitio
 # Description : The main entry point for the program.
 # Copyright   : (c) BIONITIO_AUTHOR, BIONITIO_DATE 
 # License     : BIONITIO_LICENSE 
@@ -267,7 +267,7 @@ sub pretty_output {
 sub get_options {
     my $options;
     my $parser = Getopt::ArgParse->new_parser(
-        prog => 'bionitio.pl',
+        prog => 'bionitio',
         description =>
           'Read one or more FASTA files, compute simple stats for each file',
     );

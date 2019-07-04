@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 
-baseCommand: [bionitio.pl]
+baseCommand: [bionitio]
 class: CommandLineTool
 cwlVersion: v1.0
 id: bionitio

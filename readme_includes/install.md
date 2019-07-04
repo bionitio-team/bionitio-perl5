@@ -1,4 +1,4 @@
-`bionitio.pl` depends on [BioPerl](http://bioperl.org) for parsing FASTA
+`bionitio` depends on [BioPerl](http://bioperl.org) for parsing FASTA
 files, and Log4Perl for logging. Installing these can be done in many ways:
 
 ### DEB (Ubuntu/Debian/Mint)

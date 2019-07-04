@@ -8,7 +8,7 @@ use strict;
 use warnings 'FATAL' => 'all';
 use Test::More;
 use IO::String;
-require 'bionitio.pl';
+require 'bionitio';
 
 # Test wrapper for the process_file function from bionitio.
 #
