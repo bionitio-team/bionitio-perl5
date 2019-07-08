@@ -22,7 +22,7 @@ Move into the repository directory:
 $ cd bionitio-perl5
 ```
 
-`bionitio.pl` depends on [BioPerl](http://bioperl.org) for parsing FASTA
+`bionitio` depends on [BioPerl](http://bioperl.org) for parsing FASTA
 files, and Log4Perl for logging. Installing these can be done in many ways:
 
 ### DEB (Ubuntu/Debian/Mint)
@@ -143,7 +143,7 @@ $ bionitio --log bt.log file1.fasta file2.fasta
 ```
 % cat bt.log
 2017/04/22 19:41:40 INFO program started
-2017/04/22 19:41:40 INFO command line arguments: ./bionitio.pl file1.fasta file2.fasta
+2017/04/22 19:41:40 INFO command line arguments: ./bionitio file1.fasta file2.fasta
 2017/04/22 19:41:40 INFO Processing FASTA file from file1.fasta
 2017/04/22 19:41:40 INFO Processing FASTA file from file2.fasta
 ```
@@ -180,11 +180,27 @@ Bionitio returns the following exit status values:
 
 ## Test suite
 
-A set of sample test input files is provided in the `test_data` folder.
+Sample test input files are provided in the `functional_tests/test_data` folder.
 ```
+$ cd functional_tests/test_data
 $ bionitio two_sequence.fasta
 FILENAME        TOTAL   NUMSEQ  MIN     AVG     MAX
 two_sequence.fasta      2       357     120     178     237
+```
+
+Automated tests can be run using the `functional_tests/bionitio-test.sh` script like so:
+
+```
+cd functional_tests
+./bionitio-test.sh -p bionitio -d test_data
+```
+
+The `-p` argument specifies the name of the program to test, the `-d` argument specifies the path of the directory containing test data.
+The script will print the number of passed and failed test cases. More detailed information about each test case can be obtained
+by requesting "verbose" output with the `-d` flag:
+
+```
+./bionitio-test.sh -p bionitio -d test_data -v
 ```
 
 # Bug reporting and feature requests
