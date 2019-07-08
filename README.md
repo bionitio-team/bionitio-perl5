@@ -141,7 +141,7 @@ If the ``--log FILE`` command line argument is specified, bionitio will output a
 $ bionitio --log bt.log file1.fasta file2.fasta 
 ```
 ```
-% cat bt.log
+$ cat bt.log
 2017/04/22 19:41:40 INFO program started
 2017/04/22 19:41:40 INFO command line arguments: ./bionitio file1.fasta file2.fasta
 2017/04/22 19:41:40 INFO Processing FASTA file from file1.fasta
@@ -172,9 +172,9 @@ Bionitio returns the following exit status values:
 
 ## Unit tests
 
+You can run the unit tests for bionitio with the following command:
 ```
-% ./bionitio_test.pl
-# the output of the test cases will appear here
+$ ./bionitio_test.pl
 ```
 
 

@@ -1,5 +1,5 @@
+You can run the unit tests for bionitio with the following command:
 ```
-% ./bionitio_test.pl
-# the output of the test cases will appear here
+$ ./bionitio_test.pl
 ```
 
